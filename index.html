@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پارسا پوراکبری | وبلاگ تخصصی</title>
+    
+    <!-- فونت ایرانی وزیرمتن از گوگل -->
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        /* ==================== ریست و استایل پایه ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --border: rgba(255, 255, 255, 0.08);
+            --gradient-1: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Vazir', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(ellipse at 10% 20%, rgba(56, 189, 248, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+        }
+
+        /* ==================== هدر ==================== */
+        .main-header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(to left, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.3rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+
+        /* ==================== بخش قهرمان (Hero) ==================== */
+        .hero {
+            padding: 4rem 0 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .glow-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            backdrop-filter: blur(10px);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==================== نوار جستجو ==================== */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            color: #fff;
+            font-family: 'Vazir', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* ==================== کارت‌های مقالات ==================== */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            padding: 1rem 0 3rem;
+        }
+
+        .post-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 40px -15px var(--accent-glow);
+        }
+
+        .card-img {
+            height: 200px;
+            background: linear-gradient(145deg, #1e293b, #334155);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.15);
+            overflow: hidden;
+        }
+
+        .card-img::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(0deg, var(--bg-card) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            width: fit-content;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-body h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .card-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 0.7rem;
+            color: #7dd3fc;
+        }
+
+        /* ==================== فوتر ==================== */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* ==================== ریسپانسیو ==================== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .header-inner {
+                flex-direction: column;
+            }
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر -->
+    <header class="main-header">
+        <div class="container header-inner">
+            <div class="logo">پارسا پوراکبری</div>
+            <ul class="nav-links">
+                <li><a href="#">خانه</a></li>
+                <li><a href="#">مقالات</a></li>
+                <li><a href="#">دوره‌ها</a></li>
+                <li><a href="#">درباره من</a></li>
+                <li><a href="#">تماس</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- بخش معرفی -->
+        <section class="hero">
+            <div class="hero-avatar">پ</div>
+            <span class="glow-badge">✨ توسعه‌دهنده & طراح</span>
+            <h1>پارسا پوراکبری</h1>
+            <p>به وبلاگ تخصصی من خوش آمدید. اینجا در مورد برنامه‌نویسی، طراحی مدرن و تکنولوژی‌های روز دنیا می‌نویسم.</p>
+        </section>
+
+        <!-- باکس جستجو -->
+        <div class="search-box">
+            <input type="text" placeholder="جستجو در مقالات... (مثلاً React، طراحی)" id="searchInput">
+        </div>
+
+        <!-- مقالات -->
+        <div class="posts-grid" id="postsContainer">
+            <!-- کارت‌ها به صورت داینامیک با جاوااسکریپت رندر می‌شوند -->
+        </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer class="site-footer">
+        <div class="footer-social">
+            <a href="#" title="توییتر">𝕏</a>
+            <a href="#" title="گیت‌هاب">⌨️</a>
+            <a href="#" title="اینستاگرام">📷</a>
+            <a href="#" title="لینکدین">🔗</a>
+        </div>
+        <p>© ۲۰۲۴ پارسا پوراکبری. تمامی حقوق محفوظ است.</p>
+        <p style="margin-top: 0.5rem; font-size:0.8rem;">ساخته شده با عشق و HTML خالص</p>
+    </footer>
+
+    <script>
+        // داده‌های مقالات وبلاگ
+        const blogPosts = [
+            {
+                id: 1,
+                title: "آینده توسعه وب با WebAssembly",
+                excerpt: "بررسی عمیق اینکه چگونه WebAssembly مرزهای اجرای کد در مرورگر را جابجا می‌کند و چه امکاناتی برای توسعه‌دهندگان فراهم می‌کند.",
+                tag: "برنامه‌نویسی",
+                date: "۲۵ اسفند ۱۴۰۲",
+                readTime: "۸ دقیقه",
+                icon: "⚡"
+            },
+            {
+                id: 2,
+                title: "طراحی رابط کاربری با Glassmorphism",
+                excerpt: "روند جدید طراحی که ترکیبی از شیشه، تاری و شفافیت است. آموزش پیاده‌سازی این سبک در CSS مدرن بدون کتابخانه.",
+                tag: "طراحی",
+                date: "۲۲ اسفند ۱۴۰۲",
+                readTime: "۶ دقیقه",
+                icon: "🎨"
+            },
+            {
+                id: 3,
+                title: "مدیریت State در React 2024",
+                excerpt: "مقایسه کامل بین Redux Toolkit، Zustand و Jotai به همراه مثال‌های عملی برای انتخاب بهترین ابزار در پروژه‌های واقعی.",
+                tag: "جاوااسکریپت",
+                date: "۱۸ اسفند ۱۴۰۲",
+                readTime: "۱۲ دقیقه",
+                icon: "⚛️"
+            },
+            {
+                id: 4,
+                title: "امنیت در API های RESTful",
+                excerpt: "از احراز هویت JWT تا محدودسازی نرخ درخواست؛ هر آنچه برای ایمن‌سازی API خود نیاز دارید به همراه کد نمونه.",
+                tag: "بک‌اند",
+                date: "۱۵ اسفند ۱۴۰۲",
+                readTime: "۱۰ دقیقه",
+                icon: "🔒"
+            },
+            {
+                id: 5,
+                title: "چگونه یک برنامه‌نویس بهتر شویم",
+                excerpt: "تکنیک‌های ذهنی، مدیریت زمان و منابع یادگیری که به رشد شخصی و حرفه‌ای شما در دنیای کدنویسی کمک می‌کند.",
+                tag: "مسیر شغلی",
+                date: "۱۰ اسفند ۱۴۰۲",
+                readTime: "۵ دقیقه",
+                icon: "🧠"
+            },
+            {
+                id: 6,
+                title: "معرفی Next.js 14 و App Router",
+                excerpt: "بررسی قابلیت‌های جدید مانند React Server Components، Streaming و بهبودهای عملکردی در فریم‌ورک محبوب ری‌اکت.",
+                tag: "فریم‌ورک",
+                date: "۵ اسفند ۱۴۰۲",
+                readTime: "۹ دقیقه",
+                icon: "▲"
+            }
+        ];
+
+        const postsContainer = document.getElementById('postsContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        // تابع رندر کردن کارت‌ها
+        function renderPosts(posts) {
+            if (posts.length === 0) {
+                postsContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color: var(--text-secondary);">😔 مقاله‌ای با این مشخصات یافت نشد.</div>`;
+                return;
+            }
+            
+            postsContainer.innerHTML = posts.map(post => `
+                <article class="post-card">
+                    <div class="card-img">${post.icon}</div>
+                    <div class="card-body">
+                        <span class="card-tag">${post.tag}</span>
+                        <h2>${post.title}</h2>
+                        <p>${post.excerpt}</p>
+                        <div class="card-footer">
+                            <span>📅 ${post.date} • ⏱️ ${post.readTime}</span>
+                            <a href="#" class="read-more">مطالعه مقاله <span>←</span></a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // فیلتر کردن بر اساس جستجو
+        function filterPosts() {
+            const term = searchInput.value.trim().toLowerCase();
+            const filtered = blogPosts.filter(post => 
+                post.title.toLowerCase().includes(term) || 
+                post.tag.toLowerCase().includes(term) ||
+                post.excerpt.toLowerCase().includes(term)
+            );
+            renderPosts(filtered);
+        }
+
+        // Event Listener برای جستجو
+        searchInput.addEventListener('input', filterPosts);
+
+        // رندر اولیه
+        renderPosts(blogPosts);
+
+        // اضافه کردن افکت هایپرلینک به کارت‌ها (اختیاری)
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('read-more') || e.target.closest('.read-more')) {
+                e.preventDefault();
+                alert('این یک نسخه نمایشی است. مقاله به زودی منتشر می‌شود! 😊');
+            }
+        });
+
+        console.log('🌟 وبلاگ پارسا پوراکبری با موفقیت بارگذاری شد!');
+    </script>
+</body>
+</html>
